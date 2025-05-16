@@ -1,0 +1,13 @@
+version: '3'
+services:
+  mcp-server:
+    build:
+      context: .
+    image: filesystem-mcp
+    volumes:
+      - ./project-output:/app/project
+    environment:
+      - MCP_BASE_DIR=/app/project
+    # For use with Claude Desktop
+    stdin_open: true
+    tty: false
