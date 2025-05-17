@@ -15,7 +15,7 @@ export async function getDiagnosticsHandler({ filePath }) {
     return {
       content: [
         { type: "text", text: `Diagnostics for ${filePath}:` },
-        { type: "json", data: diagnostics }
+        { type: "text", text: JSON.stringify(diagnostics, null, 2) }
       ]
     };
   } catch (error) {
@@ -34,7 +34,7 @@ export async function getCompletionsHandler({ filePath, line, character }) {
     return {
       content: [
         { type: "text", text: `Completions for ${filePath} at line ${line+1}, char ${character+1}:` },
-        { type: "json", data: completions }
+        { type: "text", text: JSON.stringify(completions, null, 2) }
       ]
     };
   } catch (error) {
@@ -54,7 +54,7 @@ export async function findDefinitionHandler({ filePath, line, character }) {
     return {
       content: [
         { type: "text", text: `Definition(s) for ${filePath} at line ${line+1}, char ${character+1}:` },
-        { type: "json", data: definition }
+        { type: "text", text: JSON.stringify(definition, null, 2) }
       ]
     };
   } catch (error) {

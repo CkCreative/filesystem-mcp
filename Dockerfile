@@ -12,6 +12,7 @@ RUN npm install --omit=dev
 RUN npm install -g typescript typescript-language-server
 # @volar/vue-language-server vue-tsc
 # Note: @volar/typescript-language-service is often a peer dep or used internally by volar
+RUN ls -l /usr/local/bin
 
 # Copy server code
 COPY index.mjs ./

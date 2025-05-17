@@ -205,7 +205,7 @@ export async function searchInFilesHandler({ searchTerm, directoryPath = '.', fi
     if (results.length === 0) {
       return { content: [{ type: "text", text: `No matches found for "${searchTerm}".` }] };
     }
-    return { content: [{ type: "json", data: results }] };
+    return { content: [{ type: "text", text: `Search results for "${searchTerm}":\n${JSON.stringify(results, null, 2)}` }] };
   } catch (error) {
     log(`Search error: ${error.message}`);
     return {

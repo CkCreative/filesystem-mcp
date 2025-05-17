@@ -26,7 +26,7 @@ export async function getEnvironmentInfoHandler() {
     return {
       content: [
         { type: "text", text: 'Filesystem MCP Server Environment Information:' },
-        { type: "json", data: info }
+        { type: "text", text: JSON.stringify(info, null, 2) }
       ]
     };
   } catch (error) {

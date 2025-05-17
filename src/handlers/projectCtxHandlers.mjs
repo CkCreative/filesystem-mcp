@@ -18,7 +18,7 @@ export async function getProjectFactsHandler() {
     return {
       content: [
         { type: "text", text: `Project Facts (${PROJECT_FACTS_FILE}):` },
-        { type: "json", data: facts }
+        { type: "text", text: JSON.stringify(facts, null, 2) }
       ]
     };
   } catch (error) {
@@ -119,7 +119,7 @@ export async function getProjectStructureHandler({ directoryPath = '.', maxDepth
     // If starting path was '.', adjust name for root
     if (directoryPath === '.') tree.name = '[Project Root]';
 
-    return { content: [{ type: "json", data: tree }] };
+    return { content: [{ type: "text", text: `Project structure for "${directoryPath === '.' ? '[Project Root]' : directoryPath}":\n${JSON.stringify(tree, null, 2)}` }] };
   } catch (error) {
     log(`Get project structure error: ${error.message}`);
     return {

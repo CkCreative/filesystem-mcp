@@ -194,7 +194,7 @@ export async function listDirectoryHandler({ path: dirPath = '.', recursive = fa
     const contents = await getDirContents(absoluteDir, 1);
 
     return {
-      content: [{ type: "json", data: contents }]
+      content: [{ type: "text", text: `Directory listing for "${dirPath}":\n${JSON.stringify(contents, null, 2)}` }]
     };
   } catch (error) {
     log(`List directory error: ${error.message}`);
@@ -327,7 +327,7 @@ export async function getFileMetadataHandler({ path: relativePath }) {
     }
 
     return {
-      content: [{ type: "json", data: metadata }]
+      content: [{ type: "text", text: `Metadata for "${relativePath}":\n${JSON.stringify(metadata, null, 2)}` }]
     };
   } catch (error) {
     log(`Get file metadata error: ${error.message}`);
